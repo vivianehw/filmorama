@@ -4,11 +4,11 @@ const useStyles = makeStyles(theme => ({
   container: {
     display: 'flex',
     width: '100%',
-    margin: 15,
-    padding: 20,
-    justifyContent: 'center',
-    border: theme.palette.border,
+    height: '100vh',
   },
+  imageBg: {
+    
+  }
 }));
 
 export default useStyles;

@@ -4,9 +4,13 @@ const GlobalStyles = css`
   body, #root {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-    min-width: 100vh;
+    box-sizing: border-box;
     margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
   }
 `;
 

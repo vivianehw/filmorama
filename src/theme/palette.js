@@ -2,8 +2,8 @@
 
 const black = "#000000";
 const white = "#FFFFFF";
-const yellow = '#f9ff10';
-const red = '#FF2020'
+const yellow = "#f9ff10";
+const red = "#FF2020";
 
 export default {
   black,
@@ -17,4 +17,5 @@ export default {
   background: {
     default: black,
   },
+  border: "3px solid white",
 };
