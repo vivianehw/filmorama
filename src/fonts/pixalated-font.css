@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'Pixalated Times New Roman';
+    src: url('./pixelated-times-new-roman.ttf') format('truetype');
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Karmatic Arcade';
+    src: url('./ka1.ttf') format('truetype');
+    font-display: swap;
+  }

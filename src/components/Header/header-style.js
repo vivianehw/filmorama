@@ -1,13 +1,14 @@
-import { makeStyles } from '@mui/styles';
+import { makeStyles } from "@mui/styles";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   container: {
-    display: 'flex',
-    width: '100%',
-    margin: 15,
+    display: "flex",
+    flexDirection: "column",
+    width: "100%",
     padding: 20,
-    justifyContent: 'center',
-    border: theme.palette.border,
+    textAlign: "center",
+    justifyContent: "center",
+    backgroundColor: "black"
   },
 }));
 

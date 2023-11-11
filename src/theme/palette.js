@@ -4,6 +4,7 @@ const black = "#000000";
 const white = "#FFFFFF";
 const yellow = "#f9ff10";
 const red = "#FF2020";
+const cyan = "#00FFFF";
 
 export default {
   black,
@@ -12,7 +13,9 @@ export default {
     primary: white,
     secondary: black,
     primaryContrast: yellow,
-    secondaryContrast: red,
+    red: red,
+    hoverButton: yellow,
+    link: cyan,
   },
   background: {
     default: black,

@@ -1,17 +1,15 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
-import ComponentBox from '../ComponentBox';
 import useStyles from "./header-style";
 
-function Header() {
+function Header({ year }) {
   const classes = useStyles();
 
   return (
-    <ComponentBox>
-      <Box className={classes.container}>
-        <Typography variant={"h1"}>FILMORAMA</Typography>
-      </Box>
-    </ComponentBox>
+    <Box className={classes.container}>
+      <Typography variant="logo">FILMORAMA</Typography>
+      <Typography variant="logoYear">{year}</Typography>
+    </Box>
   );
 }
 

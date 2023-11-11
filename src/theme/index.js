@@ -13,11 +13,7 @@ const theme = createTheme({
     },
   },
   palette: palette,
-  typography: {
-    appTypography,
-    fontFamily: 'Times New Roman',
-    fontSize: 16,
-  }
+  typography: appTypography,
 });
 
 export default theme;

@@ -1,6 +1,7 @@
 import React from "react";
 import { Box } from "@mui/material";
 import background from "../../images/stars-background.jpg";
+// import background from "../../images/star-loop.gif";
 import useStyles from "../Background/background-style";
 
 function Background({ children }) {
@@ -9,7 +10,12 @@ function Background({ children }) {
   return (
     <Box
       className={classes.container}
-      style={{ backgroundImage: `url(${background})` }}>
+      style={{
+        backgroundImage: `url(${background})`,
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+      }}>
       {children}
     </Box>
   );

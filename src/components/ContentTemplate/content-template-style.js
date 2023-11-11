@@ -10,7 +10,14 @@ const useStyles = makeStyles(theme => ({
   },
   contentContainer: {
     margin: 15,
-    border: theme.palette.border,
+  },
+  pageContainer: {
+    margin: 15,
+    marginTop: 40,
+    display: 'flex',
+    textAlign: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 }));
 

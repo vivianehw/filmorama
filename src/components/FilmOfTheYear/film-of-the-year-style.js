@@ -7,7 +7,6 @@ const useStyles = makeStyles(theme => ({
     margin: 15,
     padding: 20,
     justifyContent: 'center',
-    border: theme.palette.border,
   },
 }));
 
