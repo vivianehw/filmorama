@@ -12,6 +12,7 @@ import api from "./api";
 function AppRoutes() {
   const [isLoading, setIsLoading] = useState(true);
   const [filmData, setFilmData] = useState([]);
+  const [genreList, setGenreList] = useState([]);
   const [randomYear, setRandomYear] = useState(null);
   const emptyYears = [
     1866, 1867, 1868, 1869, 1870, 1871, 1872, 1873, 1875, 1876, 1877, 1879,
@@ -52,6 +53,7 @@ function AppRoutes() {
           setIsLoading(false);
         });
     }
+    
   }, [randomYear]);
 
   return (
