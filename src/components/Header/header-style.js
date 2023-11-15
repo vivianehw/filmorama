@@ -5,10 +5,20 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     width: "100%",
-    padding: 20,
-    textAlign: "center",
-    justifyContent: "center",
     backgroundColor: "black"
+  },
+  logoArea: {
+    display: "flex",
+    flexDirection: "row",
+    width: "100%",
+    paddingTop: 20,
+  },
+  innerArea: {
+    display: "flex",
+    flexDirection: "column",
+    width: "100%",
+    textAlign: "center",
+    alignItems: "center",
   },
 }));
 

@@ -6,7 +6,7 @@ function ContentMenu() {
   const classes = useStyles();
 
   const menuItemsArray = [
-    "Máquina do Tempo",
+    "Home",
     "Lista de Filmes",
     "Pesquisar",
     "Sobre",

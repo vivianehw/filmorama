@@ -1,17 +1,97 @@
-import React from "react";
-import { Box, Typography } from "@mui/material";
+import React, { useState, useEffect } from "react";
+import { Box, Typography, Modal } from "@mui/material";
 import useStyles from "./detailsModal-style";
 
-function DetailsModal() {
-  const classes = useStyles();
+import filmMovieGif from "../../images/film-movie.gif";
+import getPoster from "../../utils/getPoster";
+import BrokenImage from "../BrokenImage";
+import api from "../../routes/api";
 
+function FilmMovieGif() {
   return (
-    <Box className={classes.container}>
-      <Box className={classes.posterBorder}>
-        <p>test</p>
-      </Box>
-    </Box>
+    <img
+      src={filmMovieGif}
+      alt="camera film passing by"
+      width="100%"
+      height={100}
+      style={{ marginBottom: 25 }}
+    />
   );
 }
 
+function DetailsModal({ open, handleClose, film }) {
+  const classes = useStyles();
+
+  const [isLoading, setIsLoading] = useState(true);
+  const [genreList, setGenreList] = useState(true);
+
+  useEffect(() => {
+    setIsLoading(true);
+
+    if (film.genre_ids !== null) {
+      api
+        .get(`genre/movie/list`)
+        .then((response) => {
+          setGenreList(response.data.results);
+          setIsLoading(false);
+        })
+        .catch((error) => {
+          console.log(error);
+          setIsLoading(false);
+        });
+    }
+  }, []);
+
+  const getGenre = () => {
+    if (!film.genre_ids || !genreList || !genreList.genres) {
+      return "Genre not available";
+    }
+
+    const genres = genreList.genres.filter((genre) =>
+      film.genre_ids.includes(genre.id)
+    );
+
+    if (genres.length === 0) {
+      return "Genre not found";
+    }
+
+    // Pode ser necessário ajustar isso dependendo da lógica exata desejada
+    // Neste exemplo, estamos assumindo que um filme pode estar associado a vários gêneros
+    return genres.map((genre) => genre.name).join(", ");
+  };
+
+  return (
+    <Modal
+      open={open}
+      onClose={handleClose}
+      aria-labelledby="modal-modal-title"
+      aria-describedby="modal-modal-description">
+      <Box className={classes.container}>
+        <Box className={classes.innerArea} style={{ marginRight: 20 }}>
+          <Typography id="modal-modal-title" variant="h4" component="h2">
+            {film.title}
+          </Typography>
+
+          <Typography variant="h5">{getGenre()}</Typography>
+
+          <Box>
+            {film.poster_path ? (
+              <img src={getPoster(film)} alt="Film poster" width={350} />
+            ) : (
+              <BrokenImage />
+            )}
+          </Box>
+        </Box>
+
+        <Box className={classes.innerArea} style={{ marginLeft: 20 }}>
+          <FilmMovieGif />
+
+          <Typography variant="p" style={{ textAlign: "justify" }}>
+            {film.overview}
+          </Typography>
+        </Box>
+      </Box>
+    </Modal>
+  );
+}
 export default DetailsModal;

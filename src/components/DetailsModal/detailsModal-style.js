@@ -2,30 +2,24 @@ import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles(theme => ({
   container: {
-    flex: 1,
     display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  posterBorder: {
-    display: 'flex',
-    flexDirection: 'column',
-    width: 296,
-    height: 461,
+    flexDirection: 'row',
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    textAlign: 'center',
     padding: 20,
-    margin: 20,
     border: theme.palette.border,
-    "&:hover": {
-      cursor: "pointer",
-      color: theme.palette.text.hoverButton,
-      borderColor: 'cyan',
-    },
+    backgroundColor: 'black'
+  },
+  innerArea: {
+    display: 'flex',
+    flexDirection: 'column',
   },
   poster: {
-    width: 250,
-    height: 300,
-    marginBottom: 10,
-    backgroundColor: "blue"
+    flex: 1,
+    border: theme.palette.border,
   },
 }));
 

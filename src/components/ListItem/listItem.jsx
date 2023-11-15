@@ -1,29 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Typography } from "@mui/material";
 import useStyles from "./listItem-style";
 
-import detailsModal from "../DetailsModal";
+import getPoster from "../../utils/getPoster";
 import BrokenImage from "../BrokenImage";
+import DetailsModal from "../DetailsModal";
 
 function ListItem({ filmInfo }) {
   const classes = useStyles();
 
-  const getPoster = (film) => {
-    const baseUrl = "https://image.tmdb.org/t/p";
-    const fileSize = "/w300";
-    const filePath = film.poster_path;
+  const [open, setOpen] = useState(false);
+  const [selectedFilm, setSelectedFilm] = useState(null);
 
-    return baseUrl + fileSize + filePath;
+  const handleOpen = (film) => {
+    setSelectedFilm(film);
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setSelectedFilm(null);
+    setOpen(false);
   };
 
   return (
     <>
-    <detailsModal></detailsModal>
       {filmInfo.map((film) => (
-        <Typography component="li" className={classes.container}>
+        <Typography
+          component="li"
+          key={film.id}
+          className={classes.container}
+          onClick={() => handleOpen(film)}>
           <Box className={classes.posterBorder}>
             {film.poster_path ? (
-              <img src={getPoster(film)} alt="Film poster" width={250} />
+              <img
+                src={getPoster(film)}
+                alt="Film poster"
+                width={250}
+                style={{ flex: 1 }}
+              />
             ) : (
               <BrokenImage />
             )}
@@ -33,6 +47,13 @@ function ListItem({ filmInfo }) {
           </Box>
         </Typography>
       ))}
+      {selectedFilm && (
+        <DetailsModal
+          film={selectedFilm}
+          open={open}
+          handleClose={handleClose}
+        />
+      )}
     </>
   );
 }

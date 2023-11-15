@@ -33,20 +33,26 @@ export default {
     color: palette.text.primary,
     fontFamily: "Pixelated Times New Roman",
     fontSize: "60px",
+    margin: 0,
+    lineHeight: "0.7",
   },
   h5: {
     color: palette.text.primary,
     fontFamily: "Pixelated Times New Roman",
     fontSize: "50px",
+    margin: 0,
+    marginBottom: 15,
+    lineHeight: "0.8",
   },
   h6: {
     color: palette.text.primary,
     fontFamily: "Pixelated Times New Roman",
     fontSize: "40px",
+    margin: 0,
   },
   p: {
     fontFamily: "Pixelated Times New Roman",
-    fontSize: "32px",
+    fontSize: "45px",
     lineHeight: "normal",
   },
   // a: {

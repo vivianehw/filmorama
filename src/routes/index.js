@@ -37,7 +37,7 @@ function AppRoutes() {
   useEffect(() => {
     setIsLoading(true);
 
-    const language = 'en-US'
+    const language = "en-US";
     if (randomYear !== null) {
       api
         .get(

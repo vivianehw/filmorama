@@ -15,7 +15,7 @@ function FilmList({ filmData, year }) {
     if (filmData && filmData.results && filmData.results.length > 0) {
       function redirectToYear() {
         const filmReleaseDate = filmInfo[0].release_date;
-        navigate(`/${filmReleaseDate.slice(0, 4)}/film_list`);
+        navigate(`/${'year=' + filmReleaseDate.slice(0, 4)}/film_list`);
       }
 
       redirectToYear();

@@ -6,7 +6,7 @@ function Home({ filmData, year }) {
   const navigate = useNavigate();
 
   function redirectToYear() {
-    navigate(`/${year}/film_list`);
+    navigate(`/${'year=' + year}/film_list`);
   }
 
   redirectToYear();

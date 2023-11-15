@@ -2,9 +2,10 @@ import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles(theme => ({
   container: {
+    flex: 1,
     display: 'flex',
     width: '100%',
-    height: '100%',
+    height: 375,
     padding: 10,
     backgroundColor: 'white',
   },
