@@ -3,7 +3,7 @@ import { Box, Typography } from "@mui/material";
 import useStyles from "./list-item-style";
 
 import getPoster from "../../utils/getPoster";
-import BrokenImage from "../BrokenImage";
+import BrokenImage from "../../utils/BrokenImage";
 import DetailsModal from "../DetailsModal";
 
 function ListItem({ filmInfo }) {

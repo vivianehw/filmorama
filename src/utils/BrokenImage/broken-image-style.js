@@ -3,10 +3,9 @@ import { makeStyles } from '@mui/styles';
 const useStyles = makeStyles(theme => ({
   container: {
     display: 'flex',
-    margin: 15,
-    marginTop: 40,
-    justifyContent: 'center',
-    backgroundColor: 'red',
+    height: '100%',
+    padding: 10,
+    backgroundColor: 'white',
   },
 }));
 

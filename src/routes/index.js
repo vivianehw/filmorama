@@ -7,6 +7,7 @@ import ContentTemplate from "../components/ContentTemplate";
 import Home from "../pages/Home";
 import FilmList from "../pages/FilmList";
 import FilmInfo from "../pages/FilmInfo";
+import LoadingGif from "../utils/loadingGif";
 import api from "./api";
 
 function AppRoutes() {
@@ -39,47 +40,61 @@ function AppRoutes() {
 
   useEffect(() => {
     setIsLoading(true);
-      api
-        .get(
-          `discover/movie?include_adult=false&language=${language}&page=1&primary_release_year=${randomYear}&sort_by=popularity.desc`
-        )
-        .then((response) => {
-          setRandomFilmData(response.data || []);
-          setIsLoading(false);
-        })
-        .catch((error) => {
-          console.log(error);
-          setIsLoading(false);
-        });
+    api
+      .get(
+        `discover/movie?include_adult=false&language=${language}&page=1&primary_release_year=${randomYear}&sort_by=popularity.desc`
+      )
+      .then((response) => {
+        setRandomFilmData(response.data || []);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        setIsLoading(false);
+      });
   }, [randomYear]);
 
-  return (
-    <Background>
-      <BrowserRouter>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <ContentTemplate
-                page={<Home filmData={randomFilmData} year={randomYear} />}
-                year={randomYear}
-              />
-            }
-          />
-          <Route
-            path="/:year/film_list"
-            element={
-              <ContentTemplate
-                page={<FilmList filmData={randomFilmData} year={randomYear} language={language} />}
-                year={randomYear}
-              />
-            }
-          />
-          <Route path="/filme/:id" element={<FilmInfo />} />
-        </Routes>
-      </BrowserRouter>
-    </Background>
-  );
+  if (isLoading) {
+    return (
+      <div style={{ height: "100vh" }}>
+        <LoadingGif />
+      </div>
+    );
+  } else {
+    return (
+      <Background>
+        <BrowserRouter>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <ContentTemplate
+                  page={<Home filmData={randomFilmData} year={randomYear} />}
+                  year={randomYear}
+                />
+              }
+            />
+            <Route
+              path="/:year/film_list"
+              element={
+                <ContentTemplate
+                  page={
+                    <FilmList
+                      filmData={randomFilmData}
+                      year={randomYear}
+                      language={language}
+                    />
+                  }
+                  year={randomYear}
+                />
+              }
+            />
+            <Route path="/filme/:id" element={<FilmInfo />} />
+          </Routes>
+        </BrowserRouter>
+      </Background>
+    );
+  }
 }
 
 export default AppRoutes;

@@ -3,8 +3,8 @@ import { Box, Typography, Modal } from "@mui/material";
 
 import filmMovieGif from "../../images/film-movie.gif";
 import getPoster from "../../utils/getPoster";
-import BrokenImage from "../BrokenImage";
-import loadingGif from "../../images/loading1.gif";
+import BrokenImage from "../../utils/BrokenImage";
+import LoadingGif from "../../utils/loadingGif";
 import api from "../../routes/api";
 
 import useStyles from "./details-modal-style";
@@ -88,7 +88,6 @@ function DetailsModal({ open, handleClose, film }) {
             </Box>
 
             <Box className={classes.innerArea} style={{ marginLeft: 20 }}>
-
               <FilmMovieGif />
 
               <Typography variant="p" style={{ textAlign: "justify" }}>
@@ -97,7 +96,7 @@ function DetailsModal({ open, handleClose, film }) {
             </Box>
           </>
         ) : (
-          <img src={loadingGif} alt="A 'loading...' writing changing color." />
+          <LoadingGif />
         )}
       </Box>
     </Modal>
