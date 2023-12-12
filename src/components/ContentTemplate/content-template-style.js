@@ -11,10 +11,11 @@ const useStyles = makeStyles(theme => ({
   contentContainer: {
     margin: 15,
   },
-  pageContainer: {
+  filmPageContainer: {
+    display: 'flex',
+    width: '100%',
     margin: 15,
     marginTop: 40,
-    display: 'flex',
     textAlign: 'center',
     alignItems: 'center',
     justifyContent: 'center',

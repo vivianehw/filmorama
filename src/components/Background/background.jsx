@@ -11,7 +11,10 @@ function Background({ children }) {
     <Box
       className={classes.container}
       style={{
+        margin: 0,
+        overflowY: 'scroll',
         backgroundImage: `url(${background})`,
+        backgroundAttachment: 'fixed',
         backgroundPosition: "center",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",

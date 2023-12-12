@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Box, Typography } from "@mui/material";
-import useStyles from "./listItem-style";
+import useStyles from "./list-item-style";
 
 import getPoster from "../../utils/getPoster";
 import BrokenImage from "../BrokenImage";

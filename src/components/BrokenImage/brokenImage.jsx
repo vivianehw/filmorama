@@ -1,7 +1,8 @@
 import React from "react";
 import brokenIcon from "../../images/netscape-broken-image-icon.png";
-import useStyles from "../Background/background-style";
 import { Box } from "@mui/material";
+
+import useStyles from "./broken-image-style";
 
 function BrokenImage({ children }) {
   const classes = useStyles();

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Box, Typography, Modal } from "@mui/material";
-import useStyles from "./detailsModal-style";
 
 import filmMovieGif from "../../images/film-movie.gif";
 import getPoster from "../../utils/getPoster";
 import BrokenImage from "../BrokenImage";
 import loadingGif from "../../images/loading1.gif";
 import api from "../../routes/api";
+
+import useStyles from "./details-modal-style";
 
 function FilmMovieGif() {
   return (
@@ -43,8 +44,6 @@ function DetailsModal({ open, handleClose, film }) {
     }
   }, []);
 
-  console.log(genreList);
-
   const getGenre = () => {
     if (!film.genre_ids || !genreList || !genreList.genres) {
       return "Genre not available";
@@ -60,8 +59,6 @@ function DetailsModal({ open, handleClose, film }) {
 
     return genres.map((genre) => genre.name).join(" - ");
   };
-
-  console.log(isLoading);
 
   return (
     <Modal
@@ -91,13 +88,6 @@ function DetailsModal({ open, handleClose, film }) {
             </Box>
 
             <Box className={classes.innerArea} style={{ marginLeft: 20 }}>
-              <Box>
-                <Typography id="modal-modal-title" variant="h4" component="h2">
-                  {film.title}
-                </Typography>
-
-                <Typography variant="h5">{getGenre()}</Typography>
-              </Box>
 
               <FilmMovieGif />
 

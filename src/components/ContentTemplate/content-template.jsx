@@ -1,21 +1,24 @@
 import React from "react";
 import { Box } from "@mui/material";
+
+import Header from "../Header";
+import ContentMenu from "./components/ContentMenu";
+import SideMenu from "./components/SideMenu";
+
 import useStyles from "./content-template-style";
 
-import Header from '../Header/header';
-import ContentMenu from "./components/content-menu";
-
-function ContentTemplate({page, year}) {
+function ContentTemplate({ page, year }) {
   const classes = useStyles();
 
   return (
     <Box className={classes.root}>
-      <Header year={year}/>
+      <Header randomYear={year}/>
       <Box style={{ backgroundColor: "black", marginTop: 30 }}>
         <Box className={classes.contentContainer}>
           <ContentMenu />
-            <Box className={classes.pageContainer}>
-            {page}
+          <Box style={{ display: "flex" }}>
+            <Box className={classes.filmPageContainer}>{page}</Box>
+            <SideMenu />
           </Box>
         </Box>
       </Box>
