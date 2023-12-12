@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { Box, Typography } from "@mui/material";
-import useStyles from "./header-style";
+
 import twinklingStarsGif from "../../images/star1.gif";
 import colorBar from "../../images/line.gif";
+
+import useStyles from "./header-style";
 
 function StarsGif() {
   const classes = useStyles();
@@ -14,8 +17,23 @@ function StarsGif() {
   );
 }
 
-function Header({ year }) {
+function Header({ randomYear }) {
   const classes = useStyles();
+
+  const location = useLocation();
+
+  const [year, setYear] = useState(randomYear);
+
+  useEffect(() => {
+    const pathname = location.pathname;
+    const match = pathname.match(/year=(\d{4})/);
+
+    if (match) {
+      setYear(match[1]);
+    } else {
+      setYear(randomYear);
+    }
+  }, [location.pathname]);
 
   return (
     <Box className={classes.container}>
@@ -27,7 +45,12 @@ function Header({ year }) {
         </Box>
         <StarsGif />
       </Box>
-      <img src={colorBar} alt="Gif a bar changing color." width="100%" height={10} />
+      <img
+        src={colorBar}
+        alt="Gif a bar changing color."
+        width="100%"
+        height={10}
+      />
     </Box>
   );
 }

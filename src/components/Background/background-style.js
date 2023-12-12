@@ -6,7 +6,6 @@ const useStyles = makeStyles(theme => ({
     margin: 15,
     marginTop: 40,
     justifyContent: 'center',
-    backgroundColor: 'red',
   },
 }));
 

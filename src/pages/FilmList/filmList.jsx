@@ -1,26 +1,36 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Box } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-import useStyles from "./filmList-style";
+import { useParams } from "react-router-dom";
 
+import api from "../../routes/api";
 import ListItem from "../../components/ListItem";
 
-function FilmList({ filmData, year }) {
+import useStyles from "./filmList-style";
+
+function FilmList({ language }) {
   const classes = useStyles();
-  const navigate = useNavigate();
+
+  const [filmData, setFilmData] = useState([]);
+  const { year } = useParams();
 
   const filmInfo = filmData.results || [];
 
   useEffect(() => {
-    if (filmData && filmData.results && filmData.results.length > 0) {
-      function redirectToYear() {
-        const filmReleaseDate = filmInfo[0].release_date;
-        navigate(`/${'year=' + filmReleaseDate.slice(0, 4)}/film_list`);
-      }
-
-      redirectToYear();
-    }
-  }, [filmData]);
+      api
+        .get(
+          `discover/movie?include_adult=false&language=${language}&page=1&primary_release_year=${year.substr(
+            year.length - 4
+          )}&sort_by=popularity.desc`
+        )
+        .then((response) => {
+          setFilmData(response.data || []);
+          // setIsLoading(false);
+        })
+        .catch((error) => {
+          console.log(error);
+          // setIsLoading(false);
+        });
+  }, []);
 
   return (
     <Box component="ul" className={classes.container}>

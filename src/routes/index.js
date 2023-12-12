@@ -11,9 +11,9 @@ import api from "./api";
 
 function AppRoutes() {
   const [isLoading, setIsLoading] = useState(true);
-  const [filmData, setFilmData] = useState([]);
-  const [genreList, setGenreList] = useState([]);
+  const [randomFilmData, setRandomFilmData] = useState([]);
   const [randomYear, setRandomYear] = useState(null);
+  const language = "en-US";
   const emptyYears = [
     1866, 1867, 1868, 1869, 1870, 1871, 1872, 1873, 1875, 1876, 1877, 1879,
     1880, 1881, 1883, 1884, 1886,
@@ -32,28 +32,25 @@ function AppRoutes() {
   };
 
   useEffect(() => {
-    randomYearGenerator();
+    if (randomYear === null) {
+      randomYearGenerator();
+    }
   }, []);
 
   useEffect(() => {
     setIsLoading(true);
-
-    const language = "en-US";
-    if (randomYear !== null) {
       api
         .get(
           `discover/movie?include_adult=false&language=${language}&page=1&primary_release_year=${randomYear}&sort_by=popularity.desc`
         )
         .then((response) => {
-          setFilmData(response.data || []);
+          setRandomFilmData(response.data || []);
           setIsLoading(false);
         })
         .catch((error) => {
           console.log(error);
           setIsLoading(false);
         });
-    }
-    
   }, [randomYear]);
 
   return (
@@ -64,7 +61,7 @@ function AppRoutes() {
             path="/"
             element={
               <ContentTemplate
-                page={<Home filmData={filmData} year={randomYear} />}
+                page={<Home filmData={randomFilmData} year={randomYear} />}
                 year={randomYear}
               />
             }
@@ -73,7 +70,7 @@ function AppRoutes() {
             path="/:year/film_list"
             element={
               <ContentTemplate
-                page={<FilmList filmData={filmData} year={randomYear} />}
+                page={<FilmList filmData={randomFilmData} year={randomYear} language={language} />}
                 year={randomYear}
               />
             }
